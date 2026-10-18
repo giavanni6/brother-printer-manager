@@ -1,0 +1,43 @@
+[project]
+name = "brother-printer-manager"
+version = "0.1.0"
+description = "Open-source, bloat-free Windows tray manager for Brother network printers (driverless IPP/eSCL/SNMP)"
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+requires-python = ">=3.12"
+keywords = ["brother", "printer", "scanner", "ipp", "escl", "airscan", "snmp", "windows", "tray"]
+classifiers = [
+    "Operating System :: Microsoft :: Windows",
+    "Environment :: Win32 (MS Windows)",
+    "Programming Language :: Python :: 3",
+    "Topic :: Printing",
+]
+dependencies = [
+    "pystray>=0.19.5",
+    "pillow>=10.0",
+    "zeroconf>=0.132",
+]
+
+[project.urls]
+Homepage = "https://github.com/giavanni6/brother-printer-manager"
+Issues = "https://github.com/giavanni6/brother-printer-manager/issues"
+
+[project.scripts]
+printmgr = "printmgr.app:main"
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+    "pyinstaller>=6.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/printmgr"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
